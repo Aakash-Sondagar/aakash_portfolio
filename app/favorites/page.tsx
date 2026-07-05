@@ -25,11 +25,35 @@ function SearchIcon({ isHovered }: { isHovered: boolean }) {
   );
 }
 
+// Helper to render a category-specific fallback icon when image loading fails
+function CategoryFallbackIcon({ category }: { category: string }) {
+  if (category === "People") {
+    return (
+      <svg className="size-3.5 text-olive-400 dark:text-olive-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+      </svg>
+    );
+  }
+  if (category === "Movie") {
+    return (
+      <svg className="size-3.5 text-olive-400 dark:text-olive-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h1.5m-1.5 0a1.125 1.125 0 001.125 1.125M19.125 19.5h1.5m-1.5 0a1.125 1.125 0 011.125 1.125M20.25 19.5a1.125 1.125 0 001.125-1.125V5.625c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v12.75c0 .621.504 1.125 1.125 1.125m16.875 0h-16.5M21 7.5h-3.75M21 12H17.25M21 16.5h-3.75M6.75 7.5H3M6.75 12H3m3.75 4.5H3m12-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zM12 18.75h.008v.008H12v-.008z" />
+      </svg>
+    );
+  }
+  return (
+    <svg className="size-3.5 text-olive-400 dark:text-olive-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-.778.099-1.533.284-2.253" />
+    </svg>
+  );
+}
+
 // Single favorite item list row component with hover preview logic
 function FavoriteRow({ item }: { item: FavoriteItem }) {
   const [showPreview, setShowPreview] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [loadingPreview, setLoadingPreview] = useState(false);
+  const [imgError, setImgError] = useState(false);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = () => {
@@ -107,12 +131,17 @@ function FavoriteRow({ item }: { item: FavoriteItem }) {
       >
         <div className="basis-0 flex gap-4 grow items-center min-h-px min-w-px relative shrink-0">
           <div className="relative shrink-0 size-5 bg-white dark:bg-olive-950 rounded overflow-hidden flex items-center justify-center">
-            <img
-              alt={`${item.name} favicon`}
-              className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
-              src={getFaviconUrl(item.url)}
-              loading="lazy"
-            />
+            {imgError ? (
+              <CategoryFallbackIcon category={item.category} />
+            ) : (
+              <img
+                alt={`${item.name} favicon`}
+                className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
+                src={item.logo || getFaviconUrl(item.url)}
+                onError={() => setImgError(true)}
+                loading="lazy"
+              />
+            )}
           </div>
           <div className="flex gap-2 items-center flex-1 min-w-0">
             <p className="font-semibold text-olive-800 dark:text-olive-100 text-sm group-hover:underline underline-offset-4 shrink-0">
