@@ -1,4 +1,4 @@
-export type FavoriteCategory = "Product" | "People" | "Site" | "Font" | "Movie";
+export type FavoriteCategory = "Product" | "People" | "Site" | "Font" | "Movie" | "Resource";
 
 export type FavoriteItem = {
   id: string;
@@ -6,6 +6,7 @@ export type FavoriteItem = {
   description: string;
   url: string;
   category: FavoriteCategory;
+  logo?: string;
 };
 
 export type WorkItem = {
