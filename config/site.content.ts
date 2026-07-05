@@ -5,7 +5,8 @@ export const siteContent = {
   handle: "Sky",
   email: "aakashsondar@gmail.com",
   url: "https://aakashsondagar.vercel.app",
-  description: "Crafting elegant solutions at the intersection of cloud architecture and full-stack development. Transforming complex challenges into seamless experiences through innovative engineering.",
+  description: `Crafting elegant solutions at the intersection of cloud architecture and full-stack development. 
+  Transforming complex challenges into seamless experiences through innovative engineering.`,
   assets: {
     profile: "/assets/profile.png",
     signature: "/assets/footer-signature.png",
@@ -55,13 +56,23 @@ export const siteContent = {
     ] satisfies WorkItem[],
     bio: [
       [
-        { kind: "text", value: "I'm a Software Engineer with a passion for building high-quality" },
-        { kind: "text", value: "software that people love to use. Over the past 3 and a half years, I've focused on building scalable and maintainable software." },
+        { 
+          kind: "text", 
+          value: "I'm a Software Engineer with a passion for building high-quality" 
+        },
+        { 
+          kind: "text", 
+          value: `software that people love to use. Over the past 3 and a half years, 
+          I've focused on building scalable and maintainable software.`
+        },
       ],
       [
         { kind: "text", value: "I regularly " },
         { kind: "internal", label: "write", href: "/writing" },
-        { kind: "text", value: " about my learning, approaches and experiences. These essays are my way of thinking through concepts and sharing what I've learned along the way." },
+        { kind: "text", 
+          value: ` about my learning, approaches and experiences. 
+          These essays are my way of thinking through concepts and sharing what I've learned along the way.` 
+        },
       ],
       [
         { kind: "text", value: "Always open to interesting conversations about engineering, startups, and chess. Email me at " },
@@ -74,7 +85,9 @@ export const siteContent = {
   },
   writing: {
     intro:
-      "I write whenever inspiration strikes, which means I'm pretty silly about it. These are my raw thoughts on engineering, building products, and the my learning journey. Some are polished, others are more stream-of-consciousness, but they all capture what I was thinking about at the time.",
+      `I write whenever inspiration strikes, which means I'm pretty silly about it. 
+      These are my raw thoughts on engineering, building products, and the my learning journey. 
+      Some are polished, others are more stream-of-consciousness, but they all capture what I was thinking about at the time.`,
     description: "Raw thoughts on engineering, building products, and the my learning journey by Aakash Sondagar.",
   },
   footer: {

@@ -87,7 +87,7 @@ export default function Home() {
               ))
             ) : (
               <p className="text-sm text-olive-500 dark:text-olive-400 italic">
-                Nothing here yet. Working on some essays, check back soon!
+                Nothing here yet, Adding Soon!
               </p>
             )}
           </div>
