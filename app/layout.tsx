@@ -5,6 +5,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import { rootMetadata } from "@/site.config";
 import { websiteJsonLd } from "@/lib/json-ld";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const schibstedGrotesk = Schibsted_Grotesk({
   subsets: ["latin"],
@@ -66,6 +67,7 @@ export default function RootLayout({
         </a>
         <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
