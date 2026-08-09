@@ -4,6 +4,7 @@ export const siteContent = {
   name: "Aakash Sondagar",
   handle: "Sky",
   email: "aakashsondar@gmail.com",
+  // No trailing slash — sitePath() joins with "/writing" etc.
   url: "https://aakashsondagar.vercel.app",
   description: `Crafting elegant solutions at the intersection of cloud architecture and full-stack development. 
   Transforming complex challenges into seamless experiences through innovative engineering.`,
@@ -17,10 +18,11 @@ export const siteContent = {
     linkedin: "https://www.linkedin.com/in/aakash-sondagar",
     github: "https://github.com/Aakash-Sondagar",
   },
+  // OG images use live profile until dedicated og-images land in public/assets/og-images/
   og: {
-    home: "https://aakashsondagar.vercel.app/assets/og-images/og-home.jpg",
-    writing: "https://aakashsondagar.vercel.app/assets/og-images/og-writing.jpg",
-    default: "https://aakashsondagar.vercel.app/assets/og-images/og-default.jpg",
+    home: "https://aakashsondagar.vercel.app/assets/profile.png",
+    writing: "https://aakashsondagar.vercel.app/assets/profile.png",
+    default: "https://aakashsondagar.vercel.app/assets/profile.png",
   },
   nav: [
     { href: "/", label: "Home", key: "home" },
@@ -62,7 +64,7 @@ export const siteContent = {
         },
         { 
           kind: "text", 
-          value: `software that people love to use. Over the past 3 and a half years, 
+          value: ` software that people love to use. Over the past 3 and a half years, 
           I've focused on building scalable and maintainable software.`
         },
       ],
